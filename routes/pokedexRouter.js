@@ -9,7 +9,12 @@ pokedexRouter.get('/:name', (req, res) => {
 });
 
 pokedexRouter.get('/', (req, res) => {
-    res.send("You requested for the list of all Pokemon");
+
+    if (!params) {
+        res.send("You requested for the list of all Pokemon");
+    } else {
+        res.send(` ${JSON.stringify(req.query)} - ${JSON.stringify(params)}`);
+    }
 });
 
 module.exports = pokedexRouter;
