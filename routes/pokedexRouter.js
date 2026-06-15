@@ -10,10 +10,11 @@ pokedexRouter.get('/:name', (req, res) => {
 
 pokedexRouter.get('/', (req, res) => {
 
-    if (!params) {
+    if (!req.query) {
         res.send("You requested for the list of all Pokemon");
     } else {
-        res.send(` ${JSON.stringify(req.query)} - ${JSON.stringify(params)}`);
+        const { type, region } = req.query
+        res.send(`You requested for ${type} type Pokemon from the ${region} region`);
     }
 });
 
